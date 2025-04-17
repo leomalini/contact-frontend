@@ -35,13 +35,14 @@ export default function App() {
 
   async function handleDeleteCustomer(id: string) {
     try {
-      await api.delete("/customer", { params: { id } });
+      // Alternative 1: Try using axios directly
+      await api.delete(`/customer`, {
+        params: { id },
+      });
 
-      // await fetchData();
+      setCustomers(customers.filter((customer) => customer.id !== id));
     } catch (error) {
-      console.log(error);
-
-      console.error("Erro ao deletar cliente:", error);
+      console.error("Error deleting customer:", error);
     }
   }
 
@@ -88,6 +89,7 @@ export default function App() {
         <section className="flex flex-col gap-4">
           {customers.map((customer) => (
             <Contact
+              key={customer.id}
               {...customer}
               handleDeleteCustomer={handleDeleteCustomer}
             />
