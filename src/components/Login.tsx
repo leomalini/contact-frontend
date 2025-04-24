@@ -4,9 +4,12 @@ import { LoginFormData } from "../types/auth.type";
 import { LoginSchema } from "../schemas/auth-schema";
 import { login } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [loginError, setLoginError] = useState<string>("");
+
   const {
     register,
     handleSubmit,
@@ -20,6 +23,7 @@ export default function Login() {
       await login(data.email, data.password);
       navigate("/");
     } catch (error) {
+      setLoginError("Erro ao realizar o login. Tente novamente.");
       console.error("Login failed:", error);
     }
   };
@@ -30,6 +34,9 @@ export default function Login() {
         <h1 className="text-4xl font-medium text-white mb-8 text-center">
           Login
         </h1>
+        {loginError && (
+          <p className="text-red-400 text-sm text-center">{loginError}</p>
+        )}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="block text-white mb-2">Email:</label>
