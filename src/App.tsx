@@ -12,8 +12,8 @@ import { type ContactFormData, type CustomerProps } from "./types/contact.type";
 import { ContactSchema } from "./schemas/contact-schema";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { isAuthenticated, logout } from "./services/api";
 import Contact from "./components/Contact";
+import { isAuthenticated, logout } from "./services/api";
 
 function ProtectedRoute({ children }: PropsWithChildren) {
   if (!isAuthenticated()) {
