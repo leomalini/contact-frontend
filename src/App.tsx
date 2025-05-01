@@ -12,7 +12,7 @@ import { type ContactFormData, type CustomerProps } from "./types/contact.type";
 import { ContactSchema } from "./schemas/contact-schema";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Contact from "./components/Contact";
+import ContactTeste from "./components/Contact";
 import { isAuthenticated, logout } from "./services/api";
 
 function ProtectedRoute({ children }: PropsWithChildren) {
@@ -110,7 +110,7 @@ function AppContent() {
 
         <section className="flex flex-col gap-4">
           {customers.map((customer) => (
-            <Contact
+            <ContactTeste
               key={customer.id}
               {...customer}
               handleDeleteCustomer={handleDeleteCustomer}
