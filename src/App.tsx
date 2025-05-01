@@ -12,7 +12,6 @@ import { type ContactFormData, type CustomerProps } from "./types/contact.type";
 import { ContactSchema } from "./schemas/contact-schema";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import ContactTeste from "./components/Contact";
 import { isAuthenticated, logout } from "./services/api";
 
 function ProtectedRoute({ children }: PropsWithChildren) {
@@ -110,11 +109,9 @@ function AppContent() {
 
         <section className="flex flex-col gap-4">
           {customers.map((customer) => (
-            <ContactTeste
-              key={customer.id}
-              {...customer}
-              handleDeleteCustomer={handleDeleteCustomer}
-            />
+            <button onClick={() => handleDeleteCustomer(customer.id)}>
+              TESTE
+            </button>
           ))}
         </section>
       </main>
