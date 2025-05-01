@@ -4,7 +4,7 @@ import { CustomerProps } from "../types/contact.type";
 interface ContactProps extends CustomerProps {
   handleDeleteCustomer(id: string): Promise<void>;
 }
-export default function ContactTeste({
+export default function CardContact({
   createdAt,
   email,
   id,

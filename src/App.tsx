@@ -13,6 +13,7 @@ import { ContactSchema } from "./schemas/contact-schema";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { isAuthenticated, logout } from "./services/api";
+import CardContact from "./components/ContactCard";
 
 function ProtectedRoute({ children }: PropsWithChildren) {
   if (!isAuthenticated()) {
@@ -109,9 +110,11 @@ function AppContent() {
 
         <section className="flex flex-col gap-4">
           {customers.map((customer) => (
-            <button onClick={() => handleDeleteCustomer(customer.id)}>
-              TESTE
-            </button>
+            <CardContact
+              key={customer.id}
+              {...customer}
+              handleDeleteCustomer={handleDeleteCustomer}
+            />
           ))}
         </section>
       </main>
